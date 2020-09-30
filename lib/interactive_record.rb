@@ -21,6 +21,11 @@ def self.column_names
     column_names.compact
   end
   
+  def initialize(objects={})
+    objects.each do |k, v|
+      self.send("#{k}=", v)
+    end
+  end
   
   def table_name_for_insert
     self.class.table_name
